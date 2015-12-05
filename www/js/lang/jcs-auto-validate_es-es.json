@@ -1,0 +1,14 @@
+{
+    "defaultMsg": "Agrege el mensaje de error para {0}",
+    "email": "Indique un correo válido",
+    "minlength": "Escriba al menos {0} caracteres",
+    "maxlength": "El número máximo de caracteres permitido es {0}",
+    "min": "Introduzca un valor menor a {0}",
+    "max": "Introduzca un valor mayor a {0}",
+    "required": "Este campo es obligatorio",
+    "date": "Introduzca una fecha válida",
+    "pattern": "Asegurese que la información escrita coincide con el patrón {0}",
+    "number": "Escriba sólo números",
+    "url": "Escriba una URL válida en el formato http(s)://www.google.com",
+    "unique": "Este e-mail ya existe. Escoja otro" 
+}

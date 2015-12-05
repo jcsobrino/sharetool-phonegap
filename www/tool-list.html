@@ -1,0 +1,24 @@
+<ion-view title="Tool list" ng-controller="ToolCtrl">
+
+<ion-header-bar class="bar-dark">
+  <h1 class="title">Tools</h1>
+  <div class="buttons">
+    <button class="button button-icon ion-ios-navigate" ng-click="modal.show()">
+    </button>
+  </div>
+</ion-header-bar>
+<ion-content>
+
+
+<ion-list can-swipe="listCanSwipe">
+  
+  <ion-item ng-repeat="tool in toolList"class="item-thumbnail-left" ui-sref="toolDetail">
+
+    <img ng-src="http://lorempixel.com/400/200?id={{tool.id}}">
+    <h2>{{tool.name}}</h2>
+	<p>{{tool.price}}</p>
+  </ion-item>
+</ion-list>
+
+</ion-content>
+</ion-view>
