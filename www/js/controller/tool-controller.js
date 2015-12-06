@@ -8,11 +8,11 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$ionicHistory','geolocationServi
 	$scope.locationEnabled = false;
 	$scope.currentPosition = null;
 	
-	for(var i=0;i<50;i++){
-		$scope.toolList.push({"id":i,"name":"Nombre "+i,lat:50.23,lng:21.2,price:3.23});
+	$scope.listUpdate = function(){
+		
+		$scope.toolList = apiService.findTools();
 	}
 	
-	 
 	$scope.watchGeolocation = function(){
 		
 		$scope.locationEnabled = !$scope.locationEnabled;
@@ -35,6 +35,9 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$ionicHistory','geolocationServi
 		alert("Error: " + error);
 		$scope.locationEnabled = false;
 	}
+	
+	
+	
 	
 	
 }]);

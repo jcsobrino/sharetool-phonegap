@@ -3,7 +3,9 @@
 <ion-header-bar class="bar-dark">
   <h1 class="title">Tools</h1>
   <div class="buttons">
-    <button class="button button-assertive button-icon ion-ios-navigate" ng-click="watchGeolocation()">
+    <button class="button button-icon ion-ios-box" ng-click="listUpdate()">
+    </button>
+    <button class="button button-icon ion-ios-navigate" ng-click="watchGeolocation()">
     </button>
   </div>
 </ion-header-bar>
@@ -16,7 +18,7 @@
 
     <img ng-src="http://lorempixel.com/400/200?id={{tool.id}}">
     <h2>{{tool.name}}</h2>
-	<p>{{tool.price}}</p>
+	<p>{{tool.pricePerDay}}</p>
   </ion-item>
 </ion-list>
 
