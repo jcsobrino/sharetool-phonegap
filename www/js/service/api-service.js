@@ -40,8 +40,19 @@ sharetoolApp.factory('apiService', ['$cordovaSQLite', '$cordovaGeolocation', fun
 	
 	var descriptionTool = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et odio id libero condimentum dapibus non non neque. Sed congue auctor nibh, eget congue arcu vehicula in. Suspendisse potenti. Integer ac neque est. Donec sit amet aliquam nisl, vitae convallis leo. Vivamus vitae neque libero. Sed sodales hendrerit massa, eget dictum nibh molestie at.";
 
-	var numTools = 50;
+	var NUM_TOOLS = 50;
+	var PRICE_MIN = 1.0;
+    var PRICE_MAX = 100.0;
+    var LAT_MAX = 41.47;
+    var LAT_MIN = 41.31;
+    var LNG_MAX = 2.27;
+    var LNG_MIN = 2.02;
 	
+    function getRandomArbitrary(min, max) {
+    	 return (Math.random() * (max - min) + min);
+    }
+    
+    
  	var service = {
 		
 		init: function(){
@@ -50,13 +61,13 @@ sharetoolApp.factory('apiService', ['$cordovaSQLite', '$cordovaGeolocation', fun
 			service.createUser("Tammy Harris", "tharris@host.com", "password2");
 			service.createUser("Mario Brady", "mbrady@host.com", "password3");
 		
-			for(var i=0; i<numTools; i++){
+			for(var i=0; i<NUM_TOOLS; i++){
 				
 				service.createTool(toolNames[Math.floor(Math.random() * toolNames.length)],
-						           10.2, 
+								   getRandomArbitrary(PRICE_MIN,PRICE_MAX).toFixed(2), 
 						           userRepository[Math.floor(Math.random() * userRepository.length)],
 						           descriptionTool,
-						           212.21,129,2);
+						           getRandomArbitrary(LAT_MIN,LAT_MAX),getRandomArbitrary(LNG_MIN,LNG_MAX));
 			}
 		
 		},
@@ -94,7 +105,54 @@ sharetoolApp.factory('apiService', ['$cordovaSQLite', '$cordovaGeolocation', fun
 	    },
 	    findTools: function (name, maxPrice, maxKilometers, lat, lng, toolOrder){
 	    	
-	    	return toolRepository;
+	    	var name = name != null ? name.toLowerCase() : null; 
+	    	
+	    	var filteredTools = 
+    		
+	    	toolRepository.filter(function (el) {
+
+		    		if(name != null && el.name.toLowerCase().indexOf(name) == -1){
+		    			return false;
+		    		}
+		    		
+		    		if(maxPrice != null && el.price > maxPrice){
+		    			return false;
+		    		}
+		    		
+		    		if(lat != null && lng != null){
+		    			
+		    			el.distance = geolib.getDistance(
+			    						{latitude: lat, longitude: lng},
+			    						{latitude: el.lat, longitude: el.lng}
+			    					  ) / 1000.0;
+		    			if(maxKilometers != null && el.distance > maxKilometers){
+		    				return false;
+		    			}
+		    			
+		    		}
+		    		return true;
+		    });
+	    	
+	    	if(toolOrder != null){ 
+	    	 
+	    		if(toolOrder == service.toolsOrder.MIN_PRICE){
+	    		
+	    			filteredTools.sort(function(a,b){
+	    				
+	    				return a.pricePerDay - b.pricePerDay;
+	    			})
+	    			
+	    		} else if(toolOrder == service.toolsOrder.NEAR_TOOL && lat != null && lng != null){
+	    			
+	    			filteredTools.sort(function(a,b){
+	    				
+	    				return a.distance - b.distance;
+	    			})
+	    		}
+	    	}
+	    	
+	    	return filteredTools;
+	    	
 	    },
 	    getToolById: function(id){
 
@@ -105,7 +163,12 @@ sharetoolApp.factory('apiService', ['$cordovaSQLite', '$cordovaGeolocation', fun
 	    	}
 	    	
 	    	return null;
+	    },
+	    toolsOrder: {
+	    	MIN_PRICE: 0,
+	    	NEAR_TOOL: 1
 	    }
+	    
 	  }
 	
 	return service;
