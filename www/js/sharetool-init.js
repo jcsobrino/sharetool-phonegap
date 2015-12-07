@@ -25,7 +25,7 @@ sharetoolApp.config(function($stateProvider, $urlRouterProvider) {
 			url : '/toolList',
 			templateUrl : 'tool-list.html'
 	  }).state('toolDetail', {
-			url : '/toolDetail',
+			url : '/toolDetail/{toolId}',
 			templateUrl : 'tool-detail.html'
 	  }).state('filterTool', {
 			url : '/filterTool',

@@ -32,3 +32,7 @@ label.item.valid-lr {
 	color: #222;
 	font-weight: 500;
 }
+
+.no-padding {
+    padding: 0px !important;
+}

@@ -2,16 +2,18 @@
 
 var sharetoolApp = angular.module("sharetoolApp");
 
-sharetoolApp.controller('ToolCtrl', ['$scope', '$ionicHistory','geolocationService','apiService', 'persistentDataService', function($scope, $ionicHistory, geolocationService, apiService, persistentDataService){
+sharetoolApp.controller('ToolCtrl', ['$scope', '$stateParams', '$ionicHistory','geolocationService','apiService', 'persistentDataService', function($scope, $stateParams, $ionicHistory, geolocationService, apiService, persistentDataService){
 
-	$scope.toolList = [];	
+	$scope.toolList = [];
+	$scope.tool = {};
+	$scope.toolTotalPrice = "No indicado"
 	$scope.toolFilters = angular.copy(persistentDataService.getToolFilterData());
 	$scope.locationEnabled = false;
 	$scope.currentPosition = null;
 	$scope.availableToolOrder = apiService.toolsOrder;
 	
 	$scope.listUpdate = function(){
-		console.log('update');
+		
 		var filters = persistentDataService.getToolFilterData()
 		var maxPrice = filters.maxPriceCheck ? filters.maxPrice : null;
 		var maxDistance = filters.maxDistanceCheck ? filters.maxDistance : null;
@@ -31,6 +33,17 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$ionicHistory','geolocationServi
     	persistentDataService.updateToolFilterData($scope.toolFilters);
         $ionicHistory.goBack();
     };
+    
+    $scope.loadTool = function(){
+    	
+    	$scope.tool = apiService.getToolById($stateParams.toolId);
+    	$scope.toolTotalPrice = "No indicado";
+    	
+    	var filters = persistentDataService.getToolFilterData()
+		if(filters.dateCheck){
+			$scope.toolTotalPrice = $scope.tool.pricePerDay * filters.days;
+		}
+     }
 	
 	$scope.watchGeolocation = function(){
 		

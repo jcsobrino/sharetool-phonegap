@@ -17,7 +17,7 @@
 
 <ion-list can-swipe="listCanSwipe">
   
-  <ion-item ng-repeat="tool in toolList" class="item-thumbnail-left" ui-sref="toolDetail">
+  <ion-item ng-repeat="tool in toolList" class="item-thumbnail-left" ui-sref="toolDetail({toolId: tool.id})">
 
     <img ng-src="http://lorempixel.com/400/200?id={{tool.id}}">
     <h2>{{tool.name}}</h2>
