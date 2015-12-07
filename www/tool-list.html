@@ -1,11 +1,11 @@
-<ion-view title="Tool list" ng-controller="ToolCtrl">
+<ion-view title="Tool list" ng-controller="ToolCtrl" ng-init="listUpdate()" cache-view="false">
 
-<ion-header-bar class="bar-dark">
+<ion-header-bar >
+  <button class="button button-icon ion-ios-navigate" ng-class="{'button-clear button-positive':locationEnabled}" ng-click="watchGeolocation()">
+  </button>
   <h1 class="title">Tools</h1>
   <div class="buttons">
-    <button class="button button-icon ion-ios-box" ng-click="listUpdate()">
-    </button>
-    <button class="button button-icon ion-ios-navigate" ng-click="watchGeolocation()">
+    <button class="button button-icon ion-ios-toggle" ui-sref="filterTool">
     </button>
   </div>
 </ion-header-bar>
@@ -17,11 +17,12 @@
 
 <ion-list can-swipe="listCanSwipe">
   
-  <ion-item ng-repeat="tool in toolList"class="item-thumbnail-left" ui-sref="toolDetail">
+  <ion-item ng-repeat="tool in toolList" class="item-thumbnail-left" ui-sref="toolDetail">
 
     <img ng-src="http://lorempixel.com/400/200?id={{tool.id}}">
     <h2>{{tool.name}}</h2>
 	<p>{{tool.pricePerDay}}</p>
+	<p>{{tool.distance}}</p>
   </ion-item>
 </ion-list>
 

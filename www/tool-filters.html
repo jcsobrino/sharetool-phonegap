@@ -2,28 +2,25 @@
 
 <ion-nav-bar> <ion-nav-back-button class="button-clear">
 <i class="ion-arrow-left-c"></i> Back </ion-nav-back-button> </ion-nav-bar> <ion-content>
-
 <div class="list">
 
-
+<form novalidate>
 	<div class="item item-toggle title-filter">
 		Precio maximo
 		<label class="toggle toggle-assertive">
-			<input type="checkbox" ng-model="item.checked"
-				ng-checked="item.checked">
+			<input type="checkbox" ng-model="toolFilters.maxPriceCheck" ng-checked="toolFilters.maxPriceCheck">
 			<div class="track">
 				<div class="handle"></div>
 			</div>
 		</label>
 	</div>
 	<label class="item item-input ">
-		<input type="text" placeholder="Precio">
+		<input type="text" placeholder="Precio" ng-model="toolFilters.maxPrice" ng-disabled="!toolFilters.maxPriceCheck">
 	</label>
 	<div class="item item-toggle title-filter">
-		Distancia maxima
+		Distancia maxima <span ng-bind="toolFilters.maxDistance"></span>
 		<label class="toggle toggle-assertive">
-			<input type="checkbox" ng-model="item.checked"
-				ng-checked="item.checked">
+			<input type="checkbox" ng-model="toolFilters.maxDistanceCheck" ng-checked="toolFilters.maxDistanceCheck">
 			<div class="track">
 				<div class="handle"></div>
 			</div>
@@ -32,15 +29,14 @@
 	</div>
 	<div class="item range">
 		<i class="icon ion-volume-low"></i>
-		<input type="range" name="volume">
+		<input type="range" name="maxDistance" min="0" max="100" ng-model="toolFilters.maxDistance" ng-disabled="!toolFilters.maxDistanceCheck">
 		<i class="icon ion-volume-high"></i>
 	</div>
 	
 	<div class="item item-toggle title-filter">
 		Periodo de alquiler
 		<label class="toggle toggle-assertive">
-			<input type="checkbox" ng-model="item.checked"
-				ng-checked="item.checked">
+			<input type="checkbox" ng-model="toolFilters.dateCheck" ng-checked="toolFilters.dateCheck">
 			<div class="track">
 				<div class="handle"></div>
 			</div>
@@ -49,18 +45,18 @@
 	</div>
 	<div class="item item-input">
 	  <span class="input-label">Fecha inicio</span>
-	  <input type="date">
+	  <input type="date" name="date" min="2015-01-01" max="2016-12-31" ng-model="toolFilters.date" ng-disabled="!toolFilters.dateCheck" >
 	</div>
 	<div class="item item-input">
 	  <span class="input-label">Dias</span>
-	  <input type="tel">
+	  <input type="tel" name="days" ng-model="toolFilters.days" ng-disabled="!toolFilters.dateCheck">
 	</div>
 
 
 	<div class="item item-divider">Ordenacion</div>
 
 	<label class="item item-radio">
-		<input type="radio" name="toolOrder" value="go">
+		<input type="radio" name="toolOrder" ng-model="toolFilters.toolOrder" ng-value="availableToolOrder.MIN_PRICE">
 		<div class="radio-content">
 			<div class="item-content">
 				Herramientas <b>mas baratas</b> primero
@@ -70,7 +66,7 @@
 	</label>
 
 	<label class="item item-radio">
-		<input type="radio" name="toolOrder" value="go">
+		<input type="radio" name="toolOrder" ng-model="toolFilters.toolOrder" ng-value="availableToolOrder.NEAR_TOOL">
 		<div class="radio-content">
 			<div class="item-content">
 				Herramientas <b>mas cercanas</b> primero
@@ -83,12 +79,12 @@
 
  <div class="row">
 	<div class="col col-50">
-		<button class="button button-assertive">Cancelar</button>
+		<button type="reset" class="button button-assertive" ng-click="cancelFilters()">Cancelar</button>
 	</div>
 	<div class="col col-50">
-		<button class="button button-positive">Aceptar</button>
+		<button class="button button-positive" ng-click="acceptFilters()">Aceptar</button>
 	</div>
 </div> 
-
+</form>
 
 </ion-content> </ion-view>

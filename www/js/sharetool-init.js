@@ -13,7 +13,7 @@ sharetoolApp.run([
 
 sharetoolApp.config(function($stateProvider, $urlRouterProvider) {
 	 
-	  $urlRouterProvider.otherwise("/filterTool");
+	  $urlRouterProvider.otherwise("/toolList");
 	 
 	  $stateProvider.state('login', {
 			url : '/login',

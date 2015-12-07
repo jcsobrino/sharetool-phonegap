@@ -107,30 +107,29 @@ sharetoolApp.factory('apiService', ['$cordovaSQLite', '$cordovaGeolocation', fun
 	    	
 	    	var name = name != null ? name.toLowerCase() : null; 
 	    	
-	    	var filteredTools = 
-    		
-	    	toolRepository.filter(function (el) {
+	    	var filteredTools = toolRepository.filter(function (el) {
 
-		    		if(name != null && el.name.toLowerCase().indexOf(name) == -1){
-		    			return false;
-		    		}
-		    		
-		    		if(maxPrice != null && el.price > maxPrice){
-		    			return false;
-		    		}
-		    		
-		    		if(lat != null && lng != null){
-		    			
-		    			el.distance = geolib.getDistance(
-			    						{latitude: lat, longitude: lng},
-			    						{latitude: el.lat, longitude: el.lng}
-			    					  ) / 1000.0;
-		    			if(maxKilometers != null && el.distance > maxKilometers){
-		    				return false;
-		    			}
-		    			
-		    		}
-		    		return true;
+	    		if(name != null && el.name.toLowerCase().indexOf(name) == -1){
+	    			return false;
+	    		}
+	    		
+	    		if(maxPrice != null && el.pricePerDay > Number(maxPrice)){
+	    			return false;
+	    		}
+	    		
+	    		if(lat != null && lng != null){
+	    			
+	    			el.distance = geolib.getDistance(
+		    						{latitude: lat, longitude: lng},
+		    						{latitude: el.lat, longitude: el.lng}
+		    					  ) / 1000.0;
+	    			if(maxKilometers != null && el.distance > Number(maxKilometers)){
+	    				return false;
+	    			}
+	    			
+	    		}
+	    		
+	    		return true;
 		    });
 	    	
 	    	if(toolOrder != null){ 
