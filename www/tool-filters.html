@@ -1,0 +1,94 @@
+<ion-view title="Filtros herramientas" ng-controller="ToolCtrl">
+
+<ion-nav-bar> <ion-nav-back-button class="button-clear">
+<i class="ion-arrow-left-c"></i> Back </ion-nav-back-button> </ion-nav-bar> <ion-content>
+
+<div class="list">
+
+
+	<div class="item item-toggle title-filter">
+		Precio maximo
+		<label class="toggle toggle-assertive">
+			<input type="checkbox" ng-model="item.checked"
+				ng-checked="item.checked">
+			<div class="track">
+				<div class="handle"></div>
+			</div>
+		</label>
+	</div>
+	<label class="item item-input ">
+		<input type="text" placeholder="Precio">
+	</label>
+	<div class="item item-toggle title-filter">
+		Distancia maxima
+		<label class="toggle toggle-assertive">
+			<input type="checkbox" ng-model="item.checked"
+				ng-checked="item.checked">
+			<div class="track">
+				<div class="handle"></div>
+			</div>
+		</label>
+
+	</div>
+	<div class="item range">
+		<i class="icon ion-volume-low"></i>
+		<input type="range" name="volume">
+		<i class="icon ion-volume-high"></i>
+	</div>
+	
+	<div class="item item-toggle title-filter">
+		Periodo de alquiler
+		<label class="toggle toggle-assertive">
+			<input type="checkbox" ng-model="item.checked"
+				ng-checked="item.checked">
+			<div class="track">
+				<div class="handle"></div>
+			</div>
+		</label>
+
+	</div>
+	<div class="item item-input">
+	  <span class="input-label">Fecha inicio</span>
+	  <input type="date">
+	</div>
+	<div class="item item-input">
+	  <span class="input-label">Dias</span>
+	  <input type="tel">
+	</div>
+
+
+	<div class="item item-divider">Ordenacion</div>
+
+	<label class="item item-radio">
+		<input type="radio" name="toolOrder" value="go">
+		<div class="radio-content">
+			<div class="item-content">
+				Herramientas <b>mas baratas</b> primero
+			</div>
+			<i class="radio-icon ion-checkmark"></i>
+		</div>
+	</label>
+
+	<label class="item item-radio">
+		<input type="radio" name="toolOrder" value="go">
+		<div class="radio-content">
+			<div class="item-content">
+				Herramientas <b>mas cercanas</b> primero
+			</div>
+			<i class="radio-icon ion-checkmark"></i>
+		</div>
+	</label>
+
+</div>
+
+ <div class="row">
+	<div class="col col-50">
+		<button class="button button-assertive">Cancelar</button>
+	</div>
+	<div class="col col-50">
+		<button class="button button-positive">Aceptar</button>
+	</div>
+</div> 
+
+
+</ion-content> </ion-view>

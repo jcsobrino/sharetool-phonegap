@@ -11,6 +11,7 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$ionicHistory','geolocationServi
 	$scope.listUpdate = function(){
 		
 		$scope.toolList = apiService.findTools("Sierra",null,null,null,null, apiService.toolsOrder.MIN_PRICE);
+		$scope.$broadcast('scroll.refreshComplete');
 	}
 	
 	$scope.watchGeolocation = function(){
