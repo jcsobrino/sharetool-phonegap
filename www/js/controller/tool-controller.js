@@ -2,7 +2,7 @@
 
 var sharetoolApp = angular.module("sharetoolApp");
 
-sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionicFilterBar', '$ionicPopup','geolocationService','apiService', 'persistentDataService', function($scope, $state, $stateParams, $ionicFilterBar, $ionicPopup, geolocationService, apiService, persistentDataService){
+sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionicFilterBar', '$ionicPopup', '$ionicSideMenuDelegate','geolocationService','apiService', 'persistentDataService', function($scope, $state, $stateParams, $ionicFilterBar, $ionicPopup, $ionicSideMenuDelegate, geolocationService, apiService, persistentDataService){
 
 	$scope.toolList = [];
 	$scope.tool = {};
@@ -17,6 +17,10 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
 	if($scope.locationEnabled){
 		geolocationService.start(onUpdateLocation, onUpdateLocationError);
 	}
+	
+	$scope.toggleMenuLeft = function() {
+		$ionicSideMenuDelegate.toggleLeft();
+	};
 	
 	$scope.listUpdate = function(){
 		
