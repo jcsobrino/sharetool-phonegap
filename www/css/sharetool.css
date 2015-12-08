@@ -1,4 +1,9 @@
 /** Styling for the username field **/
+
+.error-msg {
+	color: red;
+	font-size: 14px;
+}
 label.item.has-error {
 	border-bottom: 2px solid red;
 	color: red;

@@ -1,8 +1,12 @@
 <ion-view title="Tool list" ng-controller="ToolCtrl" ng-init="listUpdate()" cache-view="false">
 
 <ion-header-bar >
-  <button class="button button-icon ion-ios-navigate" ng-class="{'button-clear button-positive':locationEnabled}" ng-click="watchGeolocation()">
-  </button>
+  <div class="buttons">
+	  <button class="button button-icon ion-ios-navigate" ng-class="{'button-clear button-positive':locationEnabled}" ng-click="watchGeolocation()">
+	  </button>
+	  <button class="button button-icon ion-log-out" ui-sref="login">
+	  </button>
+  </div>
   <h1 class="title">Tools</h1>
   <div class="buttons">
   	<button class="button button-icon ion-search" ng-click="showFilterBar()">
