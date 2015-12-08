@@ -2,14 +2,14 @@
 
 var sharetoolApp = angular.module("sharetoolApp");
 
-sharetoolApp.directive('uniqueEmail', [ function() {
+sharetoolApp.directive('uniqueEmail', ['apiService', function(apiService) {
   return {
     require: 'ngModel',
     link: function(scope, ele, attrs, c) {
       scope.$watch(attrs.ngModel, function(value) {
-       
-     	  c.$setValidity('unique', value != '1@1.com');
- 
+    	  if(value){
+    		  c.$setValidity('unique', !apiService.userExistsByEmail(value));
+    	  }
       });
     }
   }

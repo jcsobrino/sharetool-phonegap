@@ -10,5 +10,6 @@
     "pattern": "Asegurese que la información escrita coincide con el patrón {0}",
     "number": "Escriba sólo números",
     "url": "Escriba una URL válida en el formato http(s)://www.google.com",
-    "unique": "Este e-mail ya existe. Escoja otro" 
+    "unique": "Este e-mail ya existe. Escoja otro",
+    "match": "Las claves no coinciden" 
 }

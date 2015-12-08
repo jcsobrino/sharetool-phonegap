@@ -1,4 +1,4 @@
-<ion-view title="Crear nuevo usuario" ng-controller="UserCtrl"> 
+<ion-view title="Crear nuevo usuario" ng-controller="UserCtrl" cache-view="false"> 
 
 <ion-nav-bar>
   <ion-nav-back-button class="button-clear">
@@ -13,20 +13,20 @@
 	<form name="createUserForm" novalidate="" ng-submit="createUser()">
 		<label class="form-group item item-input item-stacked-label">
 			<span class="input-label">Nombre</span>
-			<input type="text" placeholder="John" ng-model="fdataCreateUser.name"
+			<input type="text" placeholder="Pepito" ng-model="fdataCreateUser.name"
 				required>
 		</label>
 		<label class="form-group item item-input item-stacked-label">
 			<span class="input-label">E-mail</span>
-			<input type="email" name="email" placeholder="john@suhr.com" ng-model="fdataCreateUser.email" unique-email="email" required>
+			<input type="email" name="email" placeholder="usuario@ejemplo.com" ng-model="fdataCreateUser.email" required unique-email="email">
 		</label>
 		<label class="form-group item item-input item-stacked-label">
 			<span class="input-label">Password</span>
-			<input type="password" placeholder="john@suhr.com" ng-model="fdataCreateUser.password" required>
+			<input type="password" placeholder="clave" ng-model="fdataCreateUser.password" required>
 		</label>
 		<label class="form-group item item-input item-stacked-label">
 			<span class="input-label">Repetir password</span>
-			<input type="password" placeholder="john@suhr.com" ng-model="fdataCreateUser.passwordRepeat" required>
+			<input type="password" placeholder="clave" ng-model="fdataCreateUser.passwordRepeat" required match="fdataCreateUser.password">
 		</label>
 	
 		<button type="submit" class="button button-block button-positive">

@@ -74,8 +74,8 @@ sharetoolApp.factory('apiService', ['$cordovaSQLite', '$cordovaGeolocation', fun
 		login: function(email, password){
 			
 			for(var i=0; i<userRepository.length; i++){
-	    		
-	    		if(userRepository[i].email == email && userRepository[i].password == password)
+
+				if(userRepository[i].email == email && userRepository[i].password == password)
 	    			return userRepository[i]
 	    	}
 	    	
