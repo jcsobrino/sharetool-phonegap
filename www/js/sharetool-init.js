@@ -17,7 +17,8 @@ sharetoolApp.config(function($stateProvider, $urlRouterProvider) {
 	 
 	  $stateProvider.state('login', {
 			url : '/login',
-			templateUrl : 'login.html'
+			templateUrl : 'login.html',
+			params: {'userCreatedEmail' : null}
 	  }).state('createUser', {
 			url : '/createUser',
 			templateUrl : 'create-user.html'

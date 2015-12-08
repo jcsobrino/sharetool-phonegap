@@ -2,10 +2,10 @@
 
 var sharetoolApp = angular.module("sharetoolApp");
 
-sharetoolApp.controller('UserCtrl', ['$scope', '$state', '$ionicPopup', 'apiService', function($scope, $state, $ionicPopup, apiService){
+sharetoolApp.controller('UserCtrl', ['$scope', '$state', '$stateParams', '$ionicPopup', 'apiService', function($scope, $state, $stateParams, $ionicPopup, apiService){
 
 	$scope.fdataCreateUser = {};
-	$scope.fdataLoginUser = {};
+	$scope.fdataLoginUser = {email : $stateParams.userCreatedEmail};
 	
 	$scope.createUser = function() {
 		    
@@ -17,7 +17,12 @@ sharetoolApp.controller('UserCtrl', ['$scope', '$state', '$ionicPopup', 'apiServ
 		
 		apiService.createUser(name, email, password);
 		
-		$state.go('login', {});
+		$ionicPopup.alert({
+			title: 'Usuario creado',
+		    template: 'Indique sus credenciales para iniciar la sesion'
+	    }).then(function(res) {
+		   $state.go('login', {"userCreatedEmail" : email});
+	    });
 	};
 	
 	$scope.loginUser = function() {

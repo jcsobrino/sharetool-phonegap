@@ -2,7 +2,7 @@
 
 var sharetoolApp = angular.module("sharetoolApp");
 
-sharetoolApp.factory('apiService', ['$cordovaSQLite', '$cordovaGeolocation', function ($cordovaSQLite, $cordovaGeolocation) {
+sharetoolApp.factory('apiService', [function () {
 	
 	var userId = 0;
 	var toolId = 0;
