@@ -8,32 +8,35 @@ sharetoolApp.controller('UserCtrl', ['$scope', '$state', '$stateParams', '$ionic
 	$scope.fdataLoginUser = {email : $stateParams.userCreatedEmail};
 	
 	$scope.createUser = function() {
-		    
-		console.log($scope.fdataCreateUser);
-		
+		     
 		var name = $scope.fdataCreateUser.name;
 		var email = $scope.fdataCreateUser.email;
 		var password = $scope.fdataCreateUser.password; 
 		
-		apiService.createUser(name, email, password);
+		apiService.simulateDelay(function(){
+			apiService.createUser(name, email, password);
 		
-		$ionicPopup.alert({
-			title: 'Usuario creado',
-		    template: 'Indique sus credenciales para iniciar la sesion'
-	    }).then(function(res) {
-		   $state.go('login', {"userCreatedEmail" : email});
-	    });
+			$ionicPopup.alert({
+				title: 'Usuario creado',
+			    template: 'Indique sus credenciales para iniciar la sesion'
+		    }).then(function(res) {
+			   $state.go('login', {"userCreatedEmail" : email});
+		    });
+		
+		});
 	};
 	
 	$scope.loginUser = function() {
-	    
-		var user = apiService.login($scope.fdataLoginUser.email, $scope.fdataLoginUser.password);
 		
-		if(user != null){
-			$state.go('toolList', {});
-		} else {
-			$scope.showLoginErrorAlert();
-		}
+		apiService.simulateDelay(function(){
+			var user = apiService.login($scope.fdataLoginUser.email, $scope.fdataLoginUser.password);
+
+			if(user != null){
+				$state.go('toolList', {});
+			} else {
+				$scope.showLoginErrorAlert();
+			}		
+		});
 	};
 	
 	$scope.showLoginErrorAlert = function() {

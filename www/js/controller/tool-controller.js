@@ -20,14 +20,19 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
 	
 	$scope.listUpdate = function(){
 		
+		$scope.toolList = null;
+		
 		var filters = persistentDataService.getToolFilterData()
 		var maxPrice = filters.maxPriceCheck ? filters.maxPrice : null;
 		var maxDistance = filters.maxDistanceCheck ? filters.maxDistance : null;
 		var lat = $scope.currentPosition != null ? $scope.currentPosition.latitude : null;
 		var lng = $scope.currentPosition != null ? $scope.currentPosition.longitude : null;
-		
-		$scope.toolList = apiService.findTools(filters.name, maxPrice, maxDistance, lat, lng, filters.toolOrder);
-		$scope.$broadcast('scroll.refreshComplete');
+
+		apiService.simulateDelay(function(){
+			$scope.toolList = apiService.findTools(filters.name, maxPrice, maxDistance, lat, lng, filters.toolOrder);
+			$scope.$broadcast('scroll.refreshComplete');
+		});
+
 	}
 	
 	$scope.cancelFilters = function() {

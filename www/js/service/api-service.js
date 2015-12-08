@@ -2,7 +2,7 @@
 
 var sharetoolApp = angular.module("sharetoolApp");
 
-sharetoolApp.factory('apiService', [function () {
+sharetoolApp.factory('apiService', ['$timeout', '$ionicLoading', function ($timeout, $ionicLoading) {
 	
 	var userId = 0;
 	var toolId = 0;
@@ -166,6 +166,13 @@ sharetoolApp.factory('apiService', [function () {
 	    toolsOrder: {
 	    	MIN_PRICE: 0,
 	    	NEAR_TOOL: 1
+	    },
+	    simulateDelay: function(codeToExecute){
+	    	$ionicLoading.show({template: '<ion-spinner icon="lines" class="spinner-assertive"></ion-spinner>'});
+			$timeout(function(){
+				codeToExecute();
+				$ionicLoading.hide();
+			}, getRandomArbitrary(500,1500));
 	    }
 	    
 	  }
