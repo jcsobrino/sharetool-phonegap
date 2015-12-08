@@ -1,6 +1,6 @@
 'use strict';
 
-var sharetoolApp = angular.module('sharetoolApp', ['ui.router', 'ngCordova', 'ionic', 'jcs-autoValidate']);
+var sharetoolApp = angular.module('sharetoolApp', ['ui.router', 'ngCordova', 'ionic','jett.ionic.filter.bar','jcs-autoValidate']);
 
 sharetoolApp.run([
     'defaultErrorMessageResolver',
@@ -13,7 +13,7 @@ sharetoolApp.run([
 
 sharetoolApp.config(function($stateProvider, $urlRouterProvider) {
 	 
-	  $urlRouterProvider.otherwise("/toolList");
+	  $urlRouterProvider.otherwise("/login");
 	 
 	  $stateProvider.state('login', {
 			url : '/login',

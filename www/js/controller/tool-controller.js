@@ -2,7 +2,7 @@
 
 var sharetoolApp = angular.module("sharetoolApp");
 
-sharetoolApp.controller('ToolCtrl', ['$scope', '$stateParams', '$ionicHistory','geolocationService','apiService', 'persistentDataService', function($scope, $stateParams, $ionicHistory, geolocationService, apiService, persistentDataService){
+sharetoolApp.controller('ToolCtrl', ['$scope', '$stateParams', '$ionicHistory', '$ionicFilterBar','geolocationService','apiService', 'persistentDataService', function($scope, $stateParams, $ionicHistory, $ionicFilterBar, geolocationService, apiService, persistentDataService){
 
 	$scope.toolList = [];
 	$scope.tool = {};
@@ -12,6 +12,8 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$stateParams', '$ionicHistory','
 	$scope.currentPosition = null;
 	$scope.availableToolOrder = apiService.toolsOrder;
 	
+	var filterBarInstance;
+	
 	$scope.listUpdate = function(){
 		
 		var filters = persistentDataService.getToolFilterData()
@@ -20,7 +22,7 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$stateParams', '$ionicHistory','
 		var lat = $scope.currentPosition != null ? $scope.currentPosition.latitude : null;
 		var lng = $scope.currentPosition != null ? $scope.currentPosition.longitude : null;
 		
-		$scope.toolList = apiService.findTools(null, maxPrice, maxDistance, lat, lng, filters.toolOrder);
+		$scope.toolList = apiService.findTools(filters.name, maxPrice, maxDistance, lat, lng, filters.toolOrder);
 		$scope.$broadcast('scroll.refreshComplete');
 	}
 	
@@ -43,7 +45,20 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$stateParams', '$ionicHistory','
 		if(filters.dateCheck){
 			$scope.toolTotalPrice = $scope.tool.pricePerDay * filters.days;
 		}
-     }
+    }
+    
+    $scope.showFilterBar = function () {
+        
+    	var filters = persistentDataService.getToolFilterData();
+    	
+    	filterBarInstance = $ionicFilterBar.show({
+          items: $scope.toolList,
+          update: function (filteredItems, filterText) {
+        	filters.name = filterText;
+        	$scope.listUpdate();
+          }
+        });
+      };
 	
 	$scope.watchGeolocation = function(){
 		

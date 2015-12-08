@@ -102,11 +102,12 @@
 	<access origin="*" />
 	<!-- <plugin name="cordova-plugin-whitelist" version="1" /> -->
 	<allow-intent href="*" />
-<allow-navigation href="*" />
+	<allow-navigation href="*" />
 	<platform name="android">
 		<allow-intent href="market:*" />
 	</platform>
 	<platform name="ios">
+		<preference name="KeyboardDisplayRequiresUserAction" value="false"/>
 		<allow-intent href="itms:*" />
 		<allow-intent href="itms-apps:*" />
 	</platform>
