@@ -2,9 +2,10 @@
 
 <ion-nav-bar> <ion-nav-back-button class="button-clear">
 <i class="ion-arrow-left-c"></i> Back </ion-nav-back-button> </ion-nav-bar> <ion-content>
+<form name="filtersToolForm" novalidate="" ng-submit="acceptFilters()">
+
 <div class="list">
 
-<form novalidate>
 	<div class="item item-toggle title-filter">
 		Precio maximo
 		<label class="toggle toggle-assertive">
@@ -14,11 +15,11 @@
 			</div>
 		</label>
 	</div>
-	<label class="item item-input ">
-		<input type="text" placeholder="Precio" ng-model="toolFilters.maxPrice" ng-disabled="!toolFilters.maxPriceCheck">
+	<label class="item item-input item-stacked-label">
+		<input type="number" placeholder="Precio" ng-model="toolFilters.maxPrice" ng-disabled="!toolFilters.maxPriceCheck" ng-required="toolFilters.maxPriceCheck">
 	</label>
 	<div class="item item-toggle title-filter">
-		Distancia maxima <span ng-bind="toolFilters.maxDistance"></span>
+		Distancia maxima <span class="positive filter-kilometers" ng-if="toolFilters.maxDistanceCheck">{{toolFilters.maxDistance}} km</span>
 		<label class="toggle toggle-assertive">
 			<input type="checkbox" ng-model="toolFilters.maxDistanceCheck" ng-checked="toolFilters.maxDistanceCheck">
 			<div class="track">
@@ -43,15 +44,14 @@
 		</label>
 
 	</div>
-	<div class="item item-input">
-	  <span class="input-label">Fecha inicio</span>
-	  <input type="date" name="date" min="2015-01-01" max="2016-12-31" ng-model="toolFilters.date" ng-disabled="!toolFilters.dateCheck" >
+	<div class="item item-input item-stacked-label">
+	 <!--  <span class="input-label">Fecha inicio</span> -->
+	  <input type="date" name="date" min="2015-01-01" max="2017-12-31" ng-model="toolFilters.date" ng-disabled="!toolFilters.dateCheck" ng-required="toolFilters.dateCheck">
 	</div>
-	<div class="item item-input">
-	  <span class="input-label">Dias</span>
-	  <input type="tel" name="days" ng-model="toolFilters.days" ng-disabled="!toolFilters.dateCheck">
+	<div class="item item-input item-stacked-label">
+	  <!-- <span class="input-label">Dias</span> -->
+	  <input type="number" name="days" placeholder="Dias de alquiler" ng-model="toolFilters.days" ng-disabled="!toolFilters.dateCheck" ng-required="toolFilters.dateCheck">
 	</div>
-
 
 	<div class="item item-divider">Ordenacion</div>
 
@@ -82,7 +82,7 @@
 		<button type="reset" class="button button-assertive" ng-click="cancelFilters()">Cancelar</button>
 	</div>
 	<div class="col col-50">
-		<button class="button button-positive" ng-click="acceptFilters()">Aceptar</button>
+		<button type="submit" class="button button-positive">Aceptar</button>
 	</div>
 </div> 
 </form>

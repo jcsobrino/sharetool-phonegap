@@ -1,37 +1,15 @@
 /** Styling for the username field **/
 
+.filter-kilometers {
+	width: 100%;
+    text-align: center;
+    display: inline-block;
+}
 .error-msg {
-	color: red;
+	
 	font-size: 14px;
+	display: block !important;
 }
-label.item.has-error {
-	border-bottom: 2px solid red;
-	color: red;
-	text-transform: capitalize;
-}
-
-/** Styling for the password field when an error exists**/
-label.item.has-error-lr {
-	border-left: 2px solid red;
-	border-right: 2px solid red;
-}
-
-/** Styling for the password field when an error has been resolved**/
-label.item.valid-lr {
-	border-left: 2px solid green;
-	border-right: 2px solid green;
-}
-
-/** Styling for the error text and container **/
-.form-errors {
-	margin: 5px 0
-}
-
-.form-error {
-	padding: 2px 0 2px 16px;
-	color: red;
-}
-
 .title-filter {
 	background-color: #f5f5f5;
 	color: #222;

@@ -1,6 +1,6 @@
 'use strict';
 
-var sharetoolApp = angular.module('sharetoolApp', ['ui.router', 'ngCordova', 'ionic','jett.ionic.filter.bar','jcs-autoValidate', 'validation.match']);
+var sharetoolApp = angular.module('sharetoolApp', ['ui.router', 'ionic','jett.ionic.filter.bar','jcs-autoValidate', 'validation.match']);
 
 sharetoolApp.run([
     'defaultErrorMessageResolver',
@@ -77,7 +77,7 @@ sharetoolApp.factory('ionicElementModifier', [
 	          }
 	        });
 	
-	        el.removeClass('has-success has-error has-feedback');
+	        el.removeClass('has-error');
         },        
         insertAfter = function (referenceNode, newNode) {
             referenceNode[0].parentNode.insertBefore(newNode[0], referenceNode[0].nextSibling);
@@ -96,7 +96,7 @@ sharetoolApp.factory('ionicElementModifier', [
         */
         makeInvalid = function (el, errorMsg) {
         	reset(el);
-        	var helpTextEl = angular.element('<span class="error-msg">' + errorMsg + '</span>');
+        	var helpTextEl = angular.element('<span class="error-msg assertive">' + errorMsg + '</span>');
         	insertAfter(el, helpTextEl);
         	console.log(errorMsg);
         },

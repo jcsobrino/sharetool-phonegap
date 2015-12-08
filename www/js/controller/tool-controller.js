@@ -2,17 +2,21 @@
 
 var sharetoolApp = angular.module("sharetoolApp");
 
-sharetoolApp.controller('ToolCtrl', ['$scope', '$stateParams', '$ionicHistory', '$ionicFilterBar','geolocationService','apiService', 'persistentDataService', function($scope, $stateParams, $ionicHistory, $ionicFilterBar, geolocationService, apiService, persistentDataService){
+sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionicFilterBar', '$ionicPopup','geolocationService','apiService', 'persistentDataService', function($scope, $state, $stateParams, $ionicFilterBar, $ionicPopup, geolocationService, apiService, persistentDataService){
 
 	$scope.toolList = [];
 	$scope.tool = {};
 	$scope.toolTotalPrice = "No indicado"
 	$scope.toolFilters = angular.copy(persistentDataService.getToolFilterData());
-	$scope.locationEnabled = false;
-	$scope.currentPosition = null;
+	$scope.locationEnabled = persistentDataService.isLocationEnabled();
+	$scope.currentPosition = persistentDataService.getLastKnownGeoposition();
 	$scope.availableToolOrder = apiService.toolsOrder;
 	
 	var filterBarInstance;
+	
+	if($scope.locationEnabled){
+		geolocationService.start(onUpdateLocation, onUpdateLocationError);
+	}
 	
 	$scope.listUpdate = function(){
 		
@@ -28,12 +32,12 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$stateParams', '$ionicHistory', 
 	
 	$scope.cancelFilters = function() {
  		$scope.toolFilters = angular.copy(persistentDataService.getToolFilterData());
- 		$ionicHistory.goBack();
+ 		$state.go('toolList');
     };
     
     $scope.acceptFilters = function() {
     	persistentDataService.updateToolFilterData($scope.toolFilters);
-        $ionicHistory.goBack();
+    	$state.go('toolList');
     };
     
     $scope.loadTool = function(){
@@ -63,32 +67,40 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$stateParams', '$ionicHistory', 
 	$scope.watchGeolocation = function(){
 		
 		$scope.locationEnabled = !$scope.locationEnabled;
+		persistentDataService.setLocationEnabled($scope.locationEnabled);
 		
 		if($scope.locationEnabled){
 			geolocationService.start(onUpdateLocation, onUpdateLocationError);
 		} else {
 			geolocationService.stop();
+			persistentDataService.updateLastKnownGeoposition(null);
 		}
 		
 		console.log('Location enabled: '+$scope.locationEnabled);
 	}
-	
-	
-	
+
 	function onUpdateLocation(position) {
 		$scope.currentPosition = position.coords;
+		persistentDataService.updateLastKnownGeoposition($scope.currentPosition);
 		console.log($scope.currentPosition);
 	}
 
 	function onUpdateLocationError(error) {
-		alert("Error: " + error);
 		$scope.locationEnabled = false;
+		persistentDataService.setLocationEnabled($scope.locationEnabled);
+		console.log("Error updating location");
 	}
 	
-	
-	//$scope.listUpdate();
-	
-	
-	
+	$scope.rentToolDialog = function() {
+		$ionicPopup.confirm({
+		     title: 'Alquiler herramienta',
+		     template: 'Confirma que quiere alquilar esta herramienta?'
+		   })
+		   .then(function(res) {
+			   if(res) {
+				   $state.go('toolList');
+			   } 
+	    });
+	};
 	
 }]);

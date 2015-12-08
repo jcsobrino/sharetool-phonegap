@@ -8,8 +8,12 @@ sharetoolApp.factory('persistentDataService', ['apiService', function (apiServic
 		toolOrder:apiService.toolsOrder.MIN_PRICE,
 		maxPriceCheck:false,
 		dateCheck:false,
-		maxDistanceCheck:false	
+		maxDistanceCheck:false,
+		maxDistance:50
 	};
+	
+	var lastKnownGeoposition = null;
+	var locationEnabled = false;
 	
 	return {
 	  
@@ -18,6 +22,18 @@ sharetoolApp.factory('persistentDataService', ['apiService', function (apiServic
 	  },
 	  updateToolFilterData: function (data) {
 		  toolFilterData = angular.copy(data);
+	  },
+	  getLastKnownGeoposition: function(){
+		  return lastKnownGeoposition;
+	  },
+	  updateLastKnownGeoposition: function(geoposition){
+		  lastKnownGeoposition = geoposition;
+	  },
+	  isLocationEnabled: function(){
+		  return locationEnabled;
+	  },
+	  setLocationEnabled: function(enabled){
+		  locationEnabled = enabled;
 	  }
 	};
 	

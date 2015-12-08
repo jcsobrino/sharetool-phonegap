@@ -2,30 +2,21 @@
 
 var sharetoolApp = angular.module("sharetoolApp");
 
-sharetoolApp.factory('geolocationService', ['$cordovaGeolocation', function ($cordovaGeolocation) {
-		
-	var watchOptions = {
-	   enableHighAccuracy: true
-	};
+sharetoolApp.factory('geolocationService', [function () {
 	
-	var watch;
+	var watchId;
 	return {
 	  
 	  start: function (success, error) {
-	    watch = $cordovaGeolocation.watchPosition(watchOptions);
-	    watch.then(
-		    null,
-		    function(err) {
-		      // error
-		    },
-		    function(position) {
-		     success(position);
-		}); 
+	    watchId = navigator.geolocation.watchPosition(success, error);
 	  },
 	  
 	  stop: function () {
-		  watch.clearWatch();
+	    if (watchId) {
+	       navigator.geolocation.clearWatch(watchId);
+	    }
 	  }
+	
 	};
 	
 }]);
