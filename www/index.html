@@ -36,16 +36,18 @@
 </head>
 <body ng-app="sharetoolApp" >
 
-<ion-side-menus>
+<ion-side-menus enable-menu-with-back-views="false">
 
-  <ion-side-menu-content>
-	<ion-nav-view ui-view></ion-nav-view>
-  </ion-side-menu-content>
-  <ion-side-menu side="left" is-enabled="menuLeftEnabled">
+<ion-side-menu side="left" is-enabled="menuLeftEnabled">
   
   <div ng-include="'menu-left.html'"></div>
   
   </ion-side-menu> 
+
+  <ion-side-menu-content>
+	<ion-nav-view ui-view></ion-nav-view>
+  </ion-side-menu-content>
+  
 </ion-side-menus>   
 
    

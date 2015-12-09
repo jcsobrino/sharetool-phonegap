@@ -15,7 +15,7 @@
 <ion-content>
 	<ion-refresher pulling-text="Arrastra para refrescar..." on-refresh="listUpdate()">
 	</ion-refresher>
-	<ion-list can-swipe="false">
+	<ion-list can-swipe="true">
 		<ion-item ng-repeat="tool in toolList" class="item-thumbnail-left item-text-wrap" ui-sref="toolDetail({toolId: tool.id})">
 			<img ng-src="http://lorempixel.com/200/200?id={{tool.id}}">
 			<h2>{{tool.name}}</h2>

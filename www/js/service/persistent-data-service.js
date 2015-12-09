@@ -8,6 +8,7 @@ sharetoolApp.factory('persistentDataService', ['$rootScope', 'apiService', funct
 		toolOrder:apiService.toolsOrder.MIN_PRICE,
 		maxPriceCheck:false,
 		dateCheck:false,
+		date: new Date(),
 		maxDistanceCheck:false,
 		maxDistance:50
 	};

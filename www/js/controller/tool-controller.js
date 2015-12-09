@@ -62,7 +62,7 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
     	
     	var filters = persistentDataService.getToolFilterData()
 		if(filters.dateCheck){
-			$scope.toolTotalPrice = $scope.tool.pricePerDay * filters.days;
+			$scope.toolTotalPrice = ($scope.tool.pricePerDay * filters.days)+ " €";
 		}
     }
     
