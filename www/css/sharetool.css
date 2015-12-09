@@ -16,3 +16,9 @@
 .no-padding {
     padding: 0px !important;
 }
+
+.icon-page-title {
+	text-align: center; 
+	padding: 50px;
+	font-size: 60px;
+}
