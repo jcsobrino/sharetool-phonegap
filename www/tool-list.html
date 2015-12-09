@@ -1,44 +1,4 @@
-
-<ion-side-menus ng-controller="ToolCtrl" ng-init="listUpdate()" cache-view="false">
-  <ion-side-menu side="left">
-  
-  	<ion-header-bar>
-  		<h1 class="title">ShareTool</h1>
- 	</ion-header-bar>
- 	<ion-content>
-  <div class="list">
-	<div class="item item-avatar">
-      <img ng-src="http://lorempixel.com/50/50">
-      <h2>Carlos Sobrino</h2>
-      <p>Back off, man. I'm a scientist.</p>
-    </div>
-    <div class="item item-divider">
-	    Opciones
-	</div>
-	<div class="item item-toggle item-icon-left">
-		<i class="icon ion-ios-location"></i>
-	     Geolocalizacion
-	     <label class="toggle toggle-assertive">
-	       <input type="checkbox" ng-change="watchGeolocation()" ng-model="locationEnabled"/>
-	       <div class="track">
-	         <div class="handle"></div>
-	       </div>
-	     </label>
-	 </div>
-  </div>
-	<div class="padding-horizontal">
-		 <button class="button button-block button-balanced" ui-sref="login">
-  			Finalizar sesion
-		 </button> 
-		 </div>
-
-  	</ion-content>
-</ion-side-menu>
-<ion-side-menu-content>
-
-
-
-
+<ion-view title="asda" ng-controller="ToolCtrl" ng-init="listUpdate()" cache-view="false"> 
 
 
 <ion-header-bar >
@@ -70,7 +30,5 @@
 </ion-list>
 
 </ion-content>
+</ion-view>
 
-
-</ion-side-menu-content>
-</ion-side-menus>

@@ -2,7 +2,7 @@
 
 var sharetoolApp = angular.module("sharetoolApp");
 
-sharetoolApp.factory('persistentDataService', ['apiService', function (apiService) {
+sharetoolApp.factory('persistentDataService', ['$rootScope', 'apiService', function ($rootScope, apiService) {
 		
 	var toolFilterData = {
 		toolOrder:apiService.toolsOrder.MIN_PRICE,
@@ -12,6 +12,7 @@ sharetoolApp.factory('persistentDataService', ['apiService', function (apiServic
 		maxDistance:50
 	};
 	
+	var userSession = null;
 	var lastKnownGeoposition = null;
 	var locationEnabled = false;
 	
@@ -34,6 +35,16 @@ sharetoolApp.factory('persistentDataService', ['apiService', function (apiServic
 	  },
 	  setLocationEnabled: function(enabled){
 		  locationEnabled = enabled;
+	  },
+	  getUserSession: function(){
+		  return userSession;
+	  },
+	  setUserSession: function(user){
+		  $rootScope.menuLeftEnabled = (user != null);
+		  userSession = user;
+	  },
+	  isUserLogged: function(){
+		  return userSession != null;
 	  }
 	};
 	

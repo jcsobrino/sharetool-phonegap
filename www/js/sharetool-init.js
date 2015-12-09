@@ -22,6 +22,12 @@ sharetoolApp.config(function($stateProvider, $urlRouterProvider) {
 	  }).state('createUser', {
 			url : '/createUser',
 			templateUrl : 'create-user.html'
+	  }).state('main', {
+			url : '/main',
+			templateUrl : 'main.html'
+	  }).state('menuLeft', {
+			url : '/menuLeft',
+			templateUrl : 'menu-left.html'
 	  }).state('toolList', {
 			url : '/toolList',
 			templateUrl : 'tool-list.html'

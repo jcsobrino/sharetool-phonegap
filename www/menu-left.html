@@ -1,0 +1,34 @@
+<ion-view title="Menu left" ng-controller="UserCtrl" cache-view="false"> 
+
+<ion-header-bar>
+  		<h1 class="title">ShareTool</h1>
+ 	</ion-header-bar>
+ 	<ion-content>
+  <div class="list">
+	<div class="item item-avatar">
+      <img ng-src="http://lorempixel.com/50/50">
+      <h2>{{getUserSession().name}}</h2>
+      <p>Back off, man. I'm a scientist.</p>
+    </div>
+    <div class="item item-divider">
+	    Opciones
+	</div>
+	<div class="item item-toggle item-icon-left">
+		<i class="icon ion-ios-location"></i>
+	     Geolocalizacion
+	     <label class="toggle toggle-assertive">
+	       <input type="checkbox" ng-change="watchGeolocation()" ng-model="locationEnabled"/>
+	       <div class="track">
+	         <div class="handle"></div>
+	       </div>
+	     </label>
+	 </div>
+  </div>
+	<div class="padding-horizontal">
+		 <button  menu-close class="button button-block button-balanced" ng-click="logoutUser()">
+  			Finalizar sesion
+		 </button> 
+		 </div>
+
+  	</ion-content>
+  	</ion-view>
