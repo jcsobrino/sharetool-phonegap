@@ -35,6 +35,7 @@ sharetoolApp.factory('persistentDataService', ['$rootScope', 'apiService', funct
 	  },
 	  setLocationEnabled: function(enabled){
 		  locationEnabled = enabled;
+		  $rootScope.$broadcast('locationEnabled:updated', enabled);
 	  },
 	  getUserSession: function(){
 		  return userSession;

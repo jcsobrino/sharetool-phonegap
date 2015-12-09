@@ -18,6 +18,13 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
 		geolocationService.start(onUpdateLocation, onUpdateLocationError);
 	}
 	
+	$scope.$on('locationEnabled:updated', function(event, data) {
+		$scope.locationEnabled = data;
+		if($scope.locationEnabled){
+			geolocationService.start(onUpdateLocation, onUpdateLocationError);
+		}
+    });
+	
 	$scope.toggleMenuLeft = function() {
 		$ionicSideMenuDelegate.toggleLeft();
 	};
@@ -36,7 +43,6 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
 			$scope.toolList = apiService.findTools(filters.name, maxPrice, maxDistance, lat, lng, filters.toolOrder);
 			$scope.$broadcast('scroll.refreshComplete');
 		});
-
 	}
 	
 	$scope.cancelFilters = function() {
