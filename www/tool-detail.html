@@ -1,10 +1,11 @@
 <ion-view title="{{tool.name}}" ng-controller="ToolCtrl" ng-init="loadTool()" cache-view="false"> 
 
-<ion-nav-bar>
-  <ion-nav-back-button class="button-clear">
-    <i class="ion-arrow-left-c"></i> Back
-  </ion-nav-back-button>
-</ion-nav-bar> 
+<ion-nav-bar  class="bar bar-header bar-dark"> 
+	<ion-nav-back-button class="button-clear"> 
+	<i class="ion-chevron-left"></i>
+	Volver 
+	</ion-nav-back-button> 
+</ion-nav-bar>  
 
 <ion-content>
 
@@ -15,7 +16,6 @@
 </div>
 
 <div class="list">
-
 	<a class="item item-avatar" href="#">
       <img ng-src="http://lorempixel.com/50/50">
       <h2>{{tool.user.name}}</h2>
@@ -40,11 +40,12 @@
 	 <a class="item " href="#">
 	   {{tool.description}}
 	 </a>
-
 </div>
-<button class="button button-block button-positive" ng-click="rentToolDialog()">
-	Alquilar herramienta
-</button>
+<div class="padding-horizontal">
+	<button class="button button-block button-positive" ng-click="rentToolDialog()">
+		Alquilar herramienta
+	</button>
+</div>
 
 </ion-content> 
 </ion-view>

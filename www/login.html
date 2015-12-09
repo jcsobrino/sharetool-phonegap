@@ -1,20 +1,28 @@
-<ion-view title="Login" ng-controller="UserCtrl" cache-view="false"> <ion-header-bar
-	class="bar bar-header bar-dark">
-<h1 class="title">ShareTool</h1>
-</ion-header-bar> <ion-content>
+<ion-view title="Login" ng-controller="UserCtrl" cache-view="false">
+<ion-header-bar class="bar bar-header bar-dark">
+	<h1 class="title">ShareTool</h1>
+</ion-header-bar> 
+<ion-content>
 <form name="loginUserForm" novalidate="" ng-submit="loginUser()">
 	<div class="list">
 		<label class="item item-input item-stacked-label">
-			<input type="email" placeholder="Correo electronico" ng-model="fdataLoginUser.email" required>
+			<input type="email" placeholder="Correo electronico"
+				ng-model="fdataLoginUser.email" required>
 		</label>
 		<label class="item item-input item-stacked-label">
-			<input type="password" placeholder="Clave de acceso" ng-model="fdataLoginUser.password" required>
+			<input type="password" placeholder="Clave de acceso"
+				ng-model="fdataLoginUser.password" required>
 		</label>
 	</div>
 
-	<button type="submit" class="button button-block button-positive">
-		Iniciar sesion</button>
-	<button class="button button-block button-assertive"
-		ui-sref="createUser">Crear nuevo usuario</button>
+	<div class="padding-horizontal">
+		<button type="submit" class="button button-block button-balanced">
+			Iniciar sesion
+		</button>
+		<button class="button button-block button-calm" ui-sref="createUser">
+			Crear nuevo usuario
+		</button>
+	</div>
 </form>
-</ion-content> </ion-view>
+</ion-content> 
+</ion-view>

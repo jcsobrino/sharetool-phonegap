@@ -1,90 +1,110 @@
 <ion-view title="Filtros herramientas" ng-controller="ToolCtrl">
-
-<ion-nav-bar> <ion-nav-back-button class="button-clear">
-<i class="ion-arrow-left-c"></i> Back </ion-nav-back-button> </ion-nav-bar> <ion-content>
+<ion-nav-bar  class="bar bar-header bar-dark"> 
+	<ion-nav-back-button class="button-clear"> 
+	<i class="ion-chevron-left"></i>
+	Volver 
+	</ion-nav-back-button> 
+</ion-nav-bar>  
+<ion-content>
 <form name="filtersToolForm" novalidate="" ng-submit="acceptFilters()">
-
-<div class="list">
-
-	<div class="item item-toggle title-filter">
-		Precio maximo
-		<label class="toggle toggle-assertive">
-			<input type="checkbox" ng-model="toolFilters.maxPriceCheck" ng-checked="toolFilters.maxPriceCheck">
-			<div class="track">
-				<div class="handle"></div>
-			</div>
-		</label>
-	</div>
-	<label class="item item-input item-stacked-label">
-		<input type="number" placeholder="Precio" ng-model="toolFilters.maxPrice" ng-disabled="!toolFilters.maxPriceCheck" ng-required="toolFilters.maxPriceCheck">
-	</label>
-	<div class="item item-toggle title-filter">
-		Distancia maxima <span class="positive filter-kilometers" ng-if="toolFilters.maxDistanceCheck">{{toolFilters.maxDistance}} km</span>
-		<label class="toggle toggle-assertive">
-			<input type="checkbox" ng-model="toolFilters.maxDistanceCheck" ng-checked="toolFilters.maxDistanceCheck">
-			<div class="track">
-				<div class="handle"></div>
-			</div>
-		</label>
-
-	</div>
-	<div class="item range">
-		<i class="icon ion-volume-low"></i>
-		<input type="range" name="maxDistance" min="0" max="100" ng-model="toolFilters.maxDistance" ng-disabled="!toolFilters.maxDistanceCheck">
-		<i class="icon ion-volume-high"></i>
-	</div>
-	
-	<div class="item item-toggle title-filter">
-		Periodo de alquiler
-		<label class="toggle toggle-assertive">
-			<input type="checkbox" ng-model="toolFilters.dateCheck" ng-checked="toolFilters.dateCheck">
-			<div class="track">
-				<div class="handle"></div>
-			</div>
-		</label>
-
-	</div>
-	<div class="item item-input item-stacked-label">
-	 <!--  <span class="input-label">Fecha inicio</span> -->
-	  <input type="date" name="date" min="2015-01-01" max="2017-12-31" ng-model="toolFilters.date" ng-disabled="!toolFilters.dateCheck" ng-required="toolFilters.dateCheck">
-	</div>
-	<div class="item item-input item-stacked-label">
-	  <!-- <span class="input-label">Dias</span> -->
-	  <input type="number" name="days" placeholder="Dias de alquiler" ng-model="toolFilters.days" ng-disabled="!toolFilters.dateCheck" ng-required="toolFilters.dateCheck">
-	</div>
-
-	<div class="item item-divider">Ordenacion</div>
-
-	<label class="item item-radio">
-		<input type="radio" name="toolOrder" ng-model="toolFilters.toolOrder" ng-value="availableToolOrder.MIN_PRICE">
-		<div class="radio-content">
-			<div class="item-content">
-				Herramientas <b>mas baratas</b> primero
-			</div>
-			<i class="radio-icon ion-checkmark"></i>
+	<div class="list">
+		<div class="item item-toggle title-filter">
+			Precio maximo
+			<label class="toggle toggle-assertive">
+				<input type="checkbox" ng-model="toolFilters.maxPriceCheck"
+					ng-checked="toolFilters.maxPriceCheck">
+				<div class="track">
+					<div class="handle"></div>
+				</div>
+			</label>
 		</div>
-	</label>
-
-	<label class="item item-radio">
-		<input type="radio" name="toolOrder" ng-model="toolFilters.toolOrder" ng-value="availableToolOrder.NEAR_TOOL">
-		<div class="radio-content">
-			<div class="item-content">
-				Herramientas <b>mas cercanas</b> primero
-			</div>
-			<i class="radio-icon ion-checkmark"></i>
+		<label class="item item-input item-stacked-label">
+			<input type="number" placeholder="Precio"
+				ng-model="toolFilters.maxPrice"
+				ng-disabled="!toolFilters.maxPriceCheck"
+				ng-required="toolFilters.maxPriceCheck">
+		</label>
+		
+		<div class="item item-toggle title-filter">
+			Distancia maxima <span class="positive filter-kilometers"
+				ng-if="toolFilters.maxDistanceCheck">{{toolFilters.maxDistance}}
+				km</span>
+			<label class="toggle toggle-assertive">
+				<input type="checkbox" ng-model="toolFilters.maxDistanceCheck"
+					ng-checked="toolFilters.maxDistanceCheck">
+				<div class="track">
+					<div class="handle"></div>
+				</div>
+			</label>
 		</div>
-	</label>
+		
+		<div class="item range">
+			<i class="icon ion-volume-low"></i>
+			<input type="range" name="maxDistance" min="0" max="100"
+				ng-model="toolFilters.maxDistance"
+				ng-disabled="!toolFilters.maxDistanceCheck">
+			<i class="icon ion-volume-high"></i>
+		</div>
+		
+		<div class="item item-toggle title-filter">
+			Periodo de alquiler
+			<label class="toggle toggle-assertive">
+				<input type="checkbox" ng-model="toolFilters.dateCheck"
+					ng-checked="toolFilters.dateCheck">
+				<div class="track">
+					<div class="handle"></div>
+				</div>
+			</label>
+		</div>
+		
+		<div class="item item-input item-stacked-label">
+			<input type="date" name="date" min="2015-01-01" max="2017-12-31"
+				   ng-model="toolFilters.date" 
+				   ng-disabled="!toolFilters.dateCheck"
+				   ng-required="toolFilters.dateCheck">
+		</div>
+		
+		<div class="item item-input item-stacked-label">
+			<input type="number" name="days" placeholder="Dias de alquiler"
+				   ng-model="toolFilters.days" ng-disabled="!toolFilters.dateCheck"
+				   ng-required="toolFilters.dateCheck">
+		</div>
 
-</div>
+		<div class="item item-divider">Ordenacion</div>
 
- <div class="row">
-	<div class="col col-50">
-		<button type="reset" class="button button-assertive" ng-click="cancelFilters()">Cancelar</button>
+		<label class="item item-radio">
+			<input type="radio" name="toolOrder" ng-model="toolFilters.toolOrder"
+				ng-value="availableToolOrder.MIN_PRICE">
+			<div class="radio-content">
+				<div class="item-content">
+					Herramientas <b>mas baratas</b> primero
+				</div>
+				<i class="radio-icon ion-checkmark"></i>
+			</div>
+		</label>
+
+		<label class="item item-radio">
+			<input type="radio" name="toolOrder" ng-model="toolFilters.toolOrder"
+				ng-value="availableToolOrder.NEAR_TOOL">
+			<div class="radio-content">
+				<div class="item-content">
+					Herramientas <b>mas cercanas</b> primero
+				</div>
+				<i class="radio-icon ion-checkmark"></i>
+			</div>
+		</label>
+
 	</div>
-	<div class="col col-50">
-		<button type="submit" class="button button-positive">Aceptar</button>
+
+	<div class="row no-padding">
+		<div class="col">
+			<button type="reset" class="button button-full button-assertive"
+				ng-click="cancelFilters()">Cancelar</button>
+		</div>
+		<div class="col">
+			<button type="submit" class="button button-full button-balanced">Aceptar</button>
+		</div>
 	</div>
-</div> 
 </form>
 
 </ion-content> </ion-view>
