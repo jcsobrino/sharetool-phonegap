@@ -103,7 +103,7 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
 	$scope.rentToolDialog = function() {
 		$ionicPopup.confirm({
 		     title: 'Alquiler herramienta',
-		     template: 'Confirma que quiere alquilar esta herramienta?'
+		     template: '¿Confirma que quiere alquilar esta herramienta?'
 		   })
 		   .then(function(res) {
 			   if(res) {

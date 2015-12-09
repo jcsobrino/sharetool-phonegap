@@ -20,7 +20,7 @@ sharetoolApp.controller('UserCtrl', ['$scope', '$rootScope', '$state', '$statePa
 		
 			$ionicPopup.alert({
 				title: 'Usuario creado',
-			    template: 'Indique sus credenciales para iniciar la sesion'
+			    template: 'Indique sus datos para iniciar la sesión'
 		    }).then(function(res) {
 			   $state.go('login', {"userCreatedEmail" : email});
 		    });

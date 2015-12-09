@@ -1,11 +1,13 @@
-<ion-view title="Lista herramientas" ng-controller="ToolCtrl" ng-init="listUpdate()" cache-view="false"> 
+<ion-view ng-controller="ToolCtrl" ng-init="listUpdate()" cache-view="false"> 
 <ion-header-bar class="bar bar-header bar-dark">
-	<button class="button button-icon ion-navicon" ng-click="toggleMenuLeft()">
-	</button>
+	<div class="buttons">
+		<button class="button button-icon ion-navicon"
+			ng-click="toggleMenuLeft()"></button> 
+	</div>
 	<h1 class="title">Herramientas</h1>
 	<div class="buttons">
-		<button class="button button-icon ion-ios-search" ng-click="showFilterBar()">
-		</button>
+		<button class="button button-icon ion-ios-search"
+			ng-click="showFilterBar()"></button>
 		<button class="button button-icon ion-ios-gear" ui-sref="filterTool">
 		</button>
 	</div>

@@ -1,4 +1,4 @@
-<ion-view title="Filtros herramientas" ng-controller="ToolCtrl">
+<ion-view title="Filtros y orden" ng-controller="ToolCtrl">
 <ion-nav-bar  class="bar bar-dark"> 
 	<ion-nav-back-button class="button-clear"> 
 	<i class="ion-chevron-left"></i>
@@ -9,7 +9,7 @@
 <form name="filtersToolForm" novalidate="" ng-submit="acceptFilters()">
 	<div class="list">
 		<div class="item item-toggle title-filter">
-			Precio maximo
+			Precio m&aacute;ximo
 			<label class="toggle toggle-balanced">
 				<input type="checkbox" ng-model="toolFilters.maxPriceCheck"
 					ng-checked="toolFilters.maxPriceCheck">
@@ -26,7 +26,7 @@
 		</label>
 		
 		<div class="item item-toggle title-filter">
-			Distancia maxima <span class="positive filter-kilometers"
+			Distancia m&aacute;xima <span class="positive filter-kilometers"
 				ng-if="toolFilters.maxDistanceCheck">{{toolFilters.maxDistance}}
 				km</span>
 			<label class="toggle toggle-balanced">
@@ -70,14 +70,14 @@
 				   ng-required="toolFilters.dateCheck">
 		</div>
 
-		<div class="item item-divider">Ordenacion</div>
+		<div class="item item-divider">Ordenaci&oacute;n</div>
 
 		<label class="item item-radio">
 			<input type="radio" name="toolOrder" ng-model="toolFilters.toolOrder"
 				ng-value="availableToolOrder.MIN_PRICE">
 			<div class="radio-content">
 				<div class="item-content">
-					Mas<b> baratas</b> primero
+					M&aacute;s<b> baratas</b> primero
 				</div>
 				<i class="radio-icon ion-checkmark"></i>
 			</div>
@@ -88,7 +88,7 @@
 				ng-value="availableToolOrder.NEAR_TOOL">
 			<div class="radio-content">
 				<div class="item-content">
-					Mas <b>cercanas</b> primero
+					M&aacute;s <b>cercanas</b> primero
 				</div>
 				<i class="radio-icon ion-checkmark"></i>
 			</div>
