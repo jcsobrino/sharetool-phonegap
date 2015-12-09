@@ -1,12 +1,12 @@
 <ion-view title="Lista herramientas" ng-controller="ToolCtrl" ng-init="listUpdate()" cache-view="false"> 
 <ion-header-bar class="bar bar-header bar-dark">
-	<button class="button button-icon ion-navicon-round" ng-click="toggleMenuLeft()">
+	<button class="button button-icon ion-navicon" ng-click="toggleMenuLeft()">
 	</button>
 	<h1 class="title">Herramientas</h1>
 	<div class="buttons">
-		<button class="button button-icon ion-search" ng-click="showFilterBar()">
+		<button class="button button-icon ion-ios-search" ng-click="showFilterBar()">
 		</button>
-		<button class="button button-icon ion-ios-toggle" ui-sref="filterTool">
+		<button class="button button-icon ion-ios-gear" ui-sref="filterTool">
 		</button>
 	</div>
 </ion-header-bar>
@@ -14,13 +14,13 @@
 	<ion-refresher pulling-text="Arrastra para refrescar..." on-refresh="listUpdate()">
 	</ion-refresher>
 	<ion-list can-swipe="listCanSwipe">
-		<ion-item ng-repeat="tool in toolList" class="item-thumbnail-left" ui-sref="toolDetail({toolId: tool.id})">
-			<img ng-src="http://lorempixel.com/400/200?id={{tool.id}}">
-			<h2>{{tool.name}}</h2>
-			<p>{{tool.pricePerDay}}</p>
-			<p>{{tool.distance}}</p>
+		<ion-item ng-repeat="tool in toolList" class="item-thumbnail-left item-text-wrap" ui-sref="toolDetail({toolId: tool.id})">
+			<img ng-src="http://lorempixel.com/200/200?id={{tool.id}}">
+			<h2 class="padding-top">{{tool.name}}</h2>
+			<p class="stable">{{tool.pricePerDay}} &euro;/dia <span ng-if="locationEnabled">&nbsp;<i class="icon ion-ios-location"></i>&nbsp;{{tool.distance}} km</span></p>
 		</ion-item>
 	</ion-list>
+	
 </ion-content>
 </ion-view>
 

@@ -1,12 +1,9 @@
-/** Styling for the username field **/
-
 .filter-kilometers {
-	width: 100%;
+	width: 60%;
     text-align: center;
     display: inline-block;
 }
 .error-msg {
-	
 	font-size: 14px;
 	display: block !important;
 }

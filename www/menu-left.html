@@ -1,11 +1,11 @@
-<ion-view title="Menu left" ng-controller="UserCtrl" cache-view="false"> 
+<ion-view title="Menu left" cache-view="false" ng-controller="ToolCtrl"> 
 
-<ion-header-bar>
+<ion-header-bar class="bar bar-header bar-positive"> 
   		<h1 class="title">ShareTool</h1>
  	</ion-header-bar>
  	<ion-content>
   <div class="list">
-	<div class="item item-avatar">
+	<div class="item item-avatar" ng-controller="UserCtrl">
       <img ng-src="http://lorempixel.com/50/50">
       <h2>{{getUserSession().name}}</h2>
       <p>Back off, man. I'm a scientist.</p>
@@ -24,7 +24,7 @@
 	     </label>
 	 </div>
   </div>
-	<div class="padding-horizontal">
+	<div class="padding-horizontal" ng-controller="UserCtrl">
 		 <button  menu-close class="button button-block button-balanced" ng-click="logoutUser()">
   			Finalizar sesion
 		 </button> 

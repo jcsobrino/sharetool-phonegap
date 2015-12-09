@@ -38,7 +38,7 @@ sharetoolApp.factory('apiService', ['$timeout', '$ionicLoading', function ($time
             "Afiladora doble, 150 W",
             "Martillo perforador, 36 V"];
 	
-	var descriptionTool = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et odio id libero condimentum dapibus non non neque. Sed congue auctor nibh, eget congue arcu vehicula in. Suspendisse potenti. Integer ac neque est. Donec sit amet aliquam nisl, vitae convallis leo. Vivamus vitae neque libero. Sed sodales hendrerit massa, eget dictum nibh molestie at.";
+	var descriptionTool = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et odio id libero condimentum dapibus non non neque. Sed congue auctor nibh, eget congue arcu vehicula in.";
 
 	var NUM_TOOLS = 50;
 	var PRICE_MIN = 1.0;
@@ -119,16 +119,14 @@ sharetoolApp.factory('apiService', ['$timeout', '$ionicLoading', function ($time
 	    		
 	    		if(lat != null && lng != null){
 	    			
-	    			el.distance = geolib.getDistance(
+	    			el.distance = (geolib.getDistance(
 		    						{latitude: lat, longitude: lng},
 		    						{latitude: el.lat, longitude: el.lng}
-		    					  ) / 1000.0;
+		    					  ) / 1000.0).toFixed(2);
 	    			if(maxKilometers != null && el.distance > Number(maxKilometers)){
 	    				return false;
 	    			}
-	    			
 	    		}
-	    		
 	    		return true;
 		    });
 	    	

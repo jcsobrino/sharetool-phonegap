@@ -5,7 +5,9 @@ var sharetoolApp = angular.module("sharetoolApp");
 sharetoolApp.controller('UserCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$ionicPopup', 'apiService', 'persistentDataService', function($scope, $rootScope, $state, $stateParams, $ionicPopup, apiService, persistentDataService){
 
 	$scope.fdataCreateUser = {};
-	$scope.fdataLoginUser = {email : $stateParams.userCreatedEmail};
+//	$scope.fdataLoginUser = {email : $stateParams.userCreatedEmail};
+	$scope.fdataLoginUser = {email : 'wholmes@host.com', password:'password1'};
+
 	
 	$scope.createUser = function() {
 		     

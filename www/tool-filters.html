@@ -1,5 +1,5 @@
 <ion-view title="Filtros herramientas" ng-controller="ToolCtrl">
-<ion-nav-bar  class="bar bar-header bar-dark"> 
+<ion-nav-bar  class="bar bar-dark"> 
 	<ion-nav-back-button class="button-clear"> 
 	<i class="ion-chevron-left"></i>
 	Volver 
@@ -10,7 +10,7 @@
 	<div class="list">
 		<div class="item item-toggle title-filter">
 			Precio maximo
-			<label class="toggle toggle-assertive">
+			<label class="toggle toggle-balanced">
 				<input type="checkbox" ng-model="toolFilters.maxPriceCheck"
 					ng-checked="toolFilters.maxPriceCheck">
 				<div class="track">
@@ -29,7 +29,7 @@
 			Distancia maxima <span class="positive filter-kilometers"
 				ng-if="toolFilters.maxDistanceCheck">{{toolFilters.maxDistance}}
 				km</span>
-			<label class="toggle toggle-assertive">
+			<label class="toggle toggle-balanced">
 				<input type="checkbox" ng-model="toolFilters.maxDistanceCheck"
 					ng-checked="toolFilters.maxDistanceCheck">
 				<div class="track">
@@ -39,16 +39,16 @@
 		</div>
 		
 		<div class="item range">
-			<i class="icon ion-volume-low"></i>
+			<i class="icon ion-ios-location-outline"></i>
 			<input type="range" name="maxDistance" min="0" max="100"
 				ng-model="toolFilters.maxDistance"
 				ng-disabled="!toolFilters.maxDistanceCheck">
-			<i class="icon ion-volume-high"></i>
+			<i class="icon ion-ios-location"></i>
 		</div>
 		
 		<div class="item item-toggle title-filter">
 			Periodo de alquiler
-			<label class="toggle toggle-assertive">
+			<label class="toggle toggle-balanced">
 				<input type="checkbox" ng-model="toolFilters.dateCheck"
 					ng-checked="toolFilters.dateCheck">
 				<div class="track">
@@ -77,7 +77,7 @@
 				ng-value="availableToolOrder.MIN_PRICE">
 			<div class="radio-content">
 				<div class="item-content">
-					Herramientas <b>mas baratas</b> primero
+					Mas<b> baratas</b> primero
 				</div>
 				<i class="radio-icon ion-checkmark"></i>
 			</div>
@@ -88,7 +88,7 @@
 				ng-value="availableToolOrder.NEAR_TOOL">
 			<div class="radio-content">
 				<div class="item-content">
-					Herramientas <b>mas cercanas</b> primero
+					Mas <b>cercanas</b> primero
 				</div>
 				<i class="radio-icon ion-checkmark"></i>
 			</div>

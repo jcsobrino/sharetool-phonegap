@@ -1,13 +1,13 @@
 <ion-view title="{{tool.name}}" ng-controller="ToolCtrl" ng-init="loadTool()" cache-view="false"> 
 
-<ion-nav-bar  class="bar bar-header bar-dark"> 
+<ion-nav-bar class="bar bar-dark"> 
 	<ion-nav-back-button class="button-clear"> 
-	<i class="ion-chevron-left"></i>
-	Volver 
+	<i class="ion-ios-arrow-back"></i>
+	Volver
 	</ion-nav-back-button> 
 </ion-nav-bar>  
 
-<ion-content>
+<ion-content has-header="">
 
 <div class="row no-padding">
   <div class="col no-padding">
@@ -25,23 +25,26 @@
 	<a class="item item-icon-left" href="#">
 	   <i class="icon ion-ios-location"></i>
 	   Distancia
-	   <span class="badge badge-assertive">{{tool.distance}} km</span>
+	   <span class="badge badge-balanced" ng-if="locationEnabled">{{tool.distance}} km</span>
+	   <span class="badge badge-assertive" ng-if="!locationEnabled">Desconocida</span>
 	 </a>
 	 <a class="item item-icon-left" href="#">
-	   <i class="icon ion-cash"></i>
+	   <i class="icon ion-pricetag"></i>
 	   Precio por dia
-	   <span class="badge badge-assertive">{{tool.pricePerDay}}</span>
+	   <span class="badge badge-energized">{{tool.pricePerDay}} &euro;</span>
 	 </a>
 	 <a class="item item-icon-left" href="#">
-	   <i class="icon ion-cash"></i>
+	   <i class="icon ion-pricetags"></i>
 	   Precio total
-	   <span class="badge badge-assertive">{{toolTotalPrice}}</span>
+	   <span class="badge badge-balanced">{{toolTotalPrice}}</span>
 	 </a>
-	 <a class="item " href="#">
-	   {{tool.description}}
+	 <a class="item item-text-wrap" href="#">
+		 <p style="text-align: justify;">
+		   {{tool.description}}
+		 </p>
 	 </a>
 </div>
-<div class="padding-horizontal">
+<div class="padding">
 	<button class="button button-block button-positive" ng-click="rentToolDialog()">
 		Alquilar herramienta
 	</button>

@@ -12,10 +12,9 @@
 	
 	<content src="index.html" />
 
-<!-- 	<preference name="StatusBarOverlaysWebView" value="false" />
-	<preference name="StatusBarStyle" value="default" />
-	<gap:plugin name="com.phonegap.plugin.statusbar" />
- -->
+    <preference name="StatusBarOverlaysWebView" value="false" /> 
+<preference name="StatusBarBackgroundColor" value="#000000" />
+<preference name="StatusBarStyle" value="lightcontent" />
 	<preference name="permissions" value="none" />
 	<preference name="orientation" value="default" />
 	<preference name="target-device" value="handset" />
@@ -33,7 +32,7 @@
 	<preference name="android-installLocation" value="auto" />
 	
 	<gap:plugin name="org.apache.cordova.geolocation" />
-	<gap:plugin name="org.apache.cordova.file" />
+	<gap:plugin name="org.apache.cordova.statusbar" />
 	
 	<!-- <gap:plugin name="org.apache.cordova.battery-status" />
 	<gap:plugin name="org.apache.cordova.camera" />
@@ -111,4 +110,7 @@
 		<allow-intent href="itms:*" />
 		<allow-intent href="itms-apps:*" />
 	</platform>
+	 <feature name="StatusBar">
+            <param name="ios-package" value="CDVStatusBar" onload="true" />
+        </feature>
 </widget>
