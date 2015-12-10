@@ -1,17 +1,14 @@
-<ion-view ng-controller="ToolCtrl" ng-init="listUpdate()" cache-view="false"> 
-<ion-header-bar class="bar bar-header bar-dark">
-	<div class="buttons">
-		<button class="button button-icon ion-navicon"
-			ng-click="toggleMenuLeft()"></button> 
-	</div>
-	<h1 class="title">Herramientas</h1>
-	<div class="buttons">
+<ion-view title="Herramientas" ng-controller="ToolCtrl" ng-init="listUpdate()" cache-view="false"> 
+<ion-nav-bar class="bar bar-dark">
+	<ion-nav-buttons side="left">
+	<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
 		<button class="button button-icon ion-ios-search"
 			ng-click="showFilterBar()"></button>
 		<button class="button button-icon ion-ios-gear" ui-sref="filterTool">
 		</button>
-	</div>
-</ion-header-bar>
+	</ion-nav-buttons>
+</ion-nav-bar>
 <ion-content>
 	<ion-refresher pulling-text="Arrastra para refrescar..." on-refresh="listUpdate()">
 	</ion-refresher>
