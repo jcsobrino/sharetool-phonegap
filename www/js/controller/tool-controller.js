@@ -97,13 +97,11 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
 	function onUpdateLocation(position) {
 		$scope.currentPosition = position.coords;
 		persistentDataService.updateLastKnownGeoposition($scope.currentPosition);
-		console.log($scope.currentPosition);
+		//console.log($scope.currentPosition);
 	}
 
 	function onUpdateLocationError(error) {
-		$scope.locationEnabled = false;
-		persistentDataService.setLocationEnabled($scope.locationEnabled);
-		console.log("Error updating location");
+		console.log("Error updating location. Code:"+error.code+" Message:"+error.message);
 	}
 	
 	$scope.rentToolDialog = function() {
