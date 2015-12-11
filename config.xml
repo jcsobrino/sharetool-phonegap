@@ -12,9 +12,9 @@
 	
 	<content src="index.html" />
 
-    <preference name="StatusBarOverlaysWebView" value="false" /> 
+    <!-- <preference name="StatusBarOverlaysWebView" value="false" /> 
 <preference name="StatusBarBackgroundColor" value="#000000" />
-<preference name="StatusBarStyle" value="lightcontent" />
+<preference name="StatusBarStyle" value="lightcontent" /> -->
 	<preference name="permissions" value="none" />
 	<preference name="orientation" value="default" />
 	<preference name="target-device" value="handset" />
@@ -32,7 +32,7 @@
 	<preference name="android-installLocation" value="auto" />
 	
 	<gap:plugin name="org.apache.cordova.geolocation" />
-	<gap:plugin name="org.apache.cordova.statusbar" />
+	<!-- <gap:plugin name="org.apache.cordova.statusbar" /> -->
 	
 	<!-- <gap:plugin name="org.apache.cordova.battery-status" />
 	<gap:plugin name="org.apache.cordova.camera" />
