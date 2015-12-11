@@ -13,10 +13,19 @@
 	<ion-refresher pulling-text="Arrastra para refrescar..." on-refresh="listUpdate()">
 	</ion-refresher>
 	<ion-list can-swipe="true">
-		<ion-item ng-repeat="tool in toolList" class="item-thumbnail-left item-text-wrap" ui-sref="toolDetail({toolId: tool.id})">
+		<ion-item ng-repeat="tool in toolList" class="item-thumbnail-left item-text-wrap" ui-sref="toolDetail({toolId: tool.id})"> 
 			<img ng-src="http://lorempixel.com/200/200?id={{tool.id}}">
-			<h2>{{tool.name}}</h2>
-			<p class="stable">{{tool.pricePerDay}} &euro;/dia<span ng-show="locationEnabled && tool.distance != null">&nbsp;|&nbsp;{{tool.distance}} km</span></p>
+			
+			
+			<div class="row no-padding">	
+				<div class="col col-75 no-padding">
+					<h2>{{tool.name}}</h2>
+					<p class="stable no-padding" ng-show="locationEnabled && tool.distance != null"><i class="icon ion-navigate"></i> {{tool.distance}} km</p>
+					<p class="stable no-padding" ng-show="!locationEnabled"><i class="icon ion-navigate" style="color: gray; vertical-align: middle"></i> desconocido</p>
+				</div>
+				<div class="col col-center"><p class="stable"><button class="button button-small button-assertive">{{tool.pricePerDay}}&nbsp;&euro;</button></p></div>
+				
+			</div>
 		</ion-item>
 	</ion-list>
 	

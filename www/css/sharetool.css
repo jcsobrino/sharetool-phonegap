@@ -23,3 +23,7 @@
 	font-size: 60px;
 	color: #444;
 }
+
+.item-content {
+    padding-right: 16px !important;
+}

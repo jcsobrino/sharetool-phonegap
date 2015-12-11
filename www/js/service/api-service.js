@@ -89,7 +89,7 @@ sharetoolApp.factory('apiService', ['$timeout', '$ionicLoading', function ($time
 	    },
 	    createUser: function (name, email, password){
 	    	
-	    	var user = { id: ++userId, name:name, email:email, password:password };
+	    	var user = { id: ++userId, name:name, email:email, password:password, numTools:0 };
 	    	
 	    	userRepository.push(user);
 	    	
@@ -98,6 +98,7 @@ sharetoolApp.factory('apiService', ['$timeout', '$ionicLoading', function ($time
 	    createTool: function (name, pricePerDay, user, description, lat, lng){
 	    	
 	    	var tool = { id: ++toolId, name:name, pricePerDay:pricePerDay, user:user, description:description, lat:lat, lng:lng };
+	    	user.numTools++;
 	    	
 	    	toolRepository.push(tool);
 	    	
