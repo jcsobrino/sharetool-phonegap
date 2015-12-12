@@ -27,3 +27,7 @@
 .item-content {
     padding-right: 16px !important;
 }
+
+.list-emtpy .list-emtpy p{
+	text-align: center;
+}
