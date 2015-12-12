@@ -1,20 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.helloworld" version="1.0.0"
+<widget id="jcsobrino.tddm.uoc.sharetool" version="1.0.0"
 	xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-	<name>Hello World</name>
+	<name>ShareTool</name>
 	<description>
-		Hello World sample application that responds to the
-		deviceready event.
+		ShareTool. Tecnología y desarrollo en dispositivos móviles. UOC. 2015
 	</description>
-	<author email="support@phonegap.com" href="http://phonegap.com">
-		PhoneGap Team
+	<author email="jsobrinos@uoc.edu" href="http://www.uoc.edu">
+		José Carlos Sobrino
 	</author>
 	
 	<content src="index.html" />
 
-    <!-- <preference name="StatusBarOverlaysWebView" value="false" /> 
-<preference name="StatusBarBackgroundColor" value="#000000" />
-<preference name="StatusBarStyle" value="lightcontent" /> -->
+    <preference name="StatusBarOverlaysWebView" value="false" /> 
 	<preference name="permissions" value="none" />
 	<preference name="orientation" value="default" />
 	<preference name="target-device" value="handset" />
@@ -32,7 +29,7 @@
 	<preference name="android-installLocation" value="auto" />
 	
 	<gap:plugin name="org.apache.cordova.geolocation" />
-	<!-- <gap:plugin name="org.apache.cordova.statusbar" /> -->
+	<gap:plugin name="org.apache.cordova.statusbar" /> 
 	
 	<!-- <gap:plugin name="org.apache.cordova.battery-status" />
 	<gap:plugin name="org.apache.cordova.camera" />

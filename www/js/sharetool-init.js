@@ -50,18 +50,13 @@ sharetoolApp.run(function($ionicPlatform, apiService) {
 	
 	// se ejecuta una vez el sistema se haya iniciado por completo
 	$ionicPlatform.ready(function() {
-
-//        if(window.cordova && window.cordova.plugins.Keyboard) {
-//            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-//        }
-        
+	
 		// control para la barra de estado en sistemas iOS
-        if(window.StatusBar) {
-        	StatusBar.styleLightContent();
-        	
-        }
-        
-        console.log('ionicPlatform ready!');
+	    if(window.StatusBar) {
+	    	StatusBar.styleLightContent();
+	    }
+	    
+	    console.log('ionicPlatform ready!');
     });
 });
 
