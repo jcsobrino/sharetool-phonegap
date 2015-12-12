@@ -1,3 +1,7 @@
+/**
+ * Permite validar que el email no existe en el sistema cuando se quiere crear un nuevo usuario
+ */
+
 'use strict';
 
 var sharetoolApp = angular.module("sharetoolApp");

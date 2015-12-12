@@ -1,3 +1,7 @@
+/**
+ * Controller que contiene todas las funciones de gestión de las herramientas
+ */
+
 'use strict';
 
 var sharetoolApp = angular.module("sharetoolApp");
@@ -14,10 +18,14 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
 	
 	var filterBarInstance;
 	
+	// Si el servicio está activo, cuando se carga el controller se pone a sí mismo como oyente 
+	// de los cambios que se produzcan en la localización 
 	if($scope.locationEnabled){
 		geolocationService.start(onUpdateLocation, onUpdateLocationError);
 	}
 	
+	// Si desde algún otro controller se modifica el estado del servicio activándolo, este controller se pone como oyente
+	// de las modificaciones en la geoposición
 	$scope.$on('locationEnabled:updated', function(event, data) {
 		$scope.locationEnabled = data;
 		if($scope.locationEnabled){
@@ -25,10 +33,7 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
 		}
     });
 	
-	$scope.toggleMenuLeft = function() {
-		$ionicSideMenuDelegate.toggleLeft();
-	};
-	
+	// lista de herramientas junto con los filtros y la ordenación
 	$scope.listUpdate = function(){
 		
 		$scope.toolList = null;
@@ -45,16 +50,19 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
 		});
 	}
 	
+	// botón Cancelar del apartado de Filtros y Ordenación
 	$scope.cancelFilters = function() {
  		$scope.toolFilters = angular.copy(persistentDataService.getToolFilterData());
  		$state.go('toolList');
     };
     
+    // botón Aceptar del apartado de Filtros y Ordenación
     $scope.acceptFilters = function() {
     	persistentDataService.updateToolFilterData($scope.toolFilters);
     	$state.go('toolList');
     };
     
+    // carga en memoria la herramienta cuyo ID se indica como parámetro en la URL
     $scope.loadTool = function(){
     	
     	$scope.tool = apiService.getToolById($stateParams.toolId);
@@ -66,6 +74,7 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
 		}
     }
     
+    // función que muestra la caja de búsqueda de herramientas por nombre
     $scope.showFilterBar = function () {
         
     	var filters = persistentDataService.getToolFilterData();
@@ -79,6 +88,7 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
         });
       };
 	
+    // activa y desactiva el servicio de geolocalización 
 	$scope.watchGeolocation = function(){
 		
 		$scope.locationEnabled = !$scope.locationEnabled;
@@ -94,6 +104,7 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
 		console.log('Location enabled: '+$scope.locationEnabled);
 	}
 
+	// recibe las actualizaciones en la posición del dispositivo
 	function onUpdateLocation(position) {
 		$scope.currentPosition = position.coords;
 		persistentDataService.updateLastKnownGeoposition($scope.currentPosition);
@@ -104,6 +115,7 @@ sharetoolApp.controller('ToolCtrl', ['$scope', '$state', '$stateParams', '$ionic
 		console.log("Error updating location. Code:"+error.code+" Message:"+error.message);
 	}
 	
+	// muestra el diálogo en la simulación de alquiler de una herramienta
 	$scope.rentToolDialog = function() {
 		$ionicPopup.confirm({
 		     title: 'Alquiler herramienta',

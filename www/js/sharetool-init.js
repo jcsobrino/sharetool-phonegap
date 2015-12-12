@@ -1,3 +1,7 @@
+/*
+ * Inicializaciones para el uso de AngularJS 
+ */
+
 'use strict';
 
 var sharetoolApp = angular.module('sharetoolApp', ['ui.router', 'ionic','jett.ionic.filter.bar','jcs-autoValidate', 'validation.match']);
@@ -41,14 +45,17 @@ sharetoolApp.config(function($stateProvider, $urlRouterProvider) {
 
 sharetoolApp.run(function($ionicPlatform, apiService) {
   
+	// se generan los datos de prueba cada vez que se inicia la aplicación
 	apiService.init();
 	
+	// se ejecuta una vez el sistema se haya iniciado por completo
 	$ionicPlatform.ready(function() {
 
 //        if(window.cordova && window.cordova.plugins.Keyboard) {
 //            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 //        }
         
+		// control para la barra de estado en sistemas iOS
         if(window.StatusBar) {
         	StatusBar.styleLightContent();
         	
@@ -58,6 +65,8 @@ sharetoolApp.run(function($ionicPlatform, apiService) {
     });
 });
 
+
+// permite mostrar los errores de validación en los formularios. Se utiliza en el plugin 'jcs-autoValidate'
 
 sharetoolApp.factory('ionicElementModifier', [
     function () {

@@ -1,14 +1,24 @@
+/**
+ * Servicio que simula la capa de persistencia mediante vectores en memoria. 
+ * Genera los datos de prueba y ofrece funciones para crear usuarios, iniciar sesión, 
+ * buscar y consultar las herramientas, etc.
+ */
+
+
 'use strict';
 
 var sharetoolApp = angular.module("sharetoolApp");
 
 sharetoolApp.factory('apiService', ['$timeout', '$ionicLoading', function ($timeout, $ionicLoading) {
 	
+	// simulan las claves primarias de las entidades User y Tool
 	var userId = 0;
 	var toolId = 0;
+	// simulan las tablas de las entidades User y Tool
 	var userRepository = [];
 	var toolRepository = [];
 	
+	// nombres de las herramientas que se generarán como datos de prueba
 	var toolNames = [
             "Taladro Percutor 500W",
             "Mini sierra circular",
@@ -40,6 +50,7 @@ sharetoolApp.factory('apiService', ['$timeout', '$ionicLoading', function ($time
 	
 	var descriptionTool = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et odio id libero condimentum dapibus non non neque. Sed congue auctor nibh, eget congue arcu vehicula in.";
 
+	// parámetros para la generación aleatoria de herramientas
 	var NUM_TOOLS = 50;
 	var PRICE_MIN = 1.0;
     var PRICE_MAX = 100.0;
@@ -55,6 +66,7 @@ sharetoolApp.factory('apiService', ['$timeout', '$ionicLoading', function ($time
     
  	var service = {
 		
+ 		// crea los datos de prueba. Se invoca desde sharetool-init.js cuando se inicia la aplicación
 		init: function(){
 
 			service.createUser("Wayne Holmes", "wholmes@host.com", "password1");
@@ -166,6 +178,7 @@ sharetoolApp.factory('apiService', ['$timeout', '$ionicLoading', function ($time
 	    	MIN_PRICE: 0,
 	    	NEAR_TOOL: 1
 	    },
+	    // simulador de retardo en las comunicaciones a través de la red
 	    simulateDelay: function(codeToExecute){
 	    	$ionicLoading.show({template: '<ion-spinner icon="lines" class="spinner-assertive"></ion-spinner>'});
 			$timeout(function(){

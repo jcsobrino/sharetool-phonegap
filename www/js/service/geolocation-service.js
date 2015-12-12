@@ -1,3 +1,7 @@
+/**
+ * Servicio para la la lectura de la posición geográfica del dispositivo
+ */
+
 'use strict';
 
 var sharetoolApp = angular.module("sharetoolApp");
